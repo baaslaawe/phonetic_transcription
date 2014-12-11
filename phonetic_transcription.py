@@ -4,18 +4,19 @@ import csv
 
 def get_dict_data():
     f = open('dict/fra.dict')
-    csv_f = csv.reader(f, delimiter='\t')
+    csv_f = csv.DictReader(f, delimiter='\t')
     dict_hmap = {}
-    for ipa, trans in csv_f:
-        dict_hmap[ipa] = trans
+    for row in csv_f:
+        dict_hmap[row['ipa']] = row
     return dict_hmap
 
-def trans(ipa):
+def trans(ipa, alpha3):
     dict_data = get_dict_data()
     out = ""
     for char in ipa:
-        out += dict_data[char]
+        out += dict_data[char][alpha3]
     return out
 
 if __name__ == "__main__":
-    print trans("tu")
+    print get_dict_data()
+    print trans('tu', 'fra')
