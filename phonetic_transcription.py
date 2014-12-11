@@ -3,7 +3,7 @@
 import csv
 
 def get_dict_data():
-    f = open('dict/fra.dict')
+    f = open('data/ipa2phonetic.dict')
     csv_f = csv.DictReader(f, delimiter='\t')
     dict_hmap = {}
     for row in csv_f:
